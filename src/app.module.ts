@@ -9,6 +9,7 @@ import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.js'
 import { join } from 'path'
 import { createDataSourceOptions } from './database'
 import { ExchangeModule } from './exchange/exchange.module';
+import express from 'express'
 
 @Module({
   imports: [
@@ -29,6 +30,8 @@ export class AppModule implements NestModule {
       maxFileSize: 1024 * 1024 * (+process.env.MAX_FILE_SIZE),
       maxFiles: +process.env.MAX_FILE_COUNT + 4
     })).forRoutes('graphql')
+
+    consumer.apply(express.static(join(__dirname, '../uploads'))).forRoutes('/uploads')
 
     consumer.apply(altairExpress({
       endpointURL: '/graphql'
