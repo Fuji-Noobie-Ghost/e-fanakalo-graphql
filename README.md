@@ -27,8 +27,7 @@
     ```
 
 ### The EndPoint is http://localhost:3000/graphql
-### You can view all queries and mutations in 
-this [link](src/schema.gql)
+### You can view the GraphQL Schema this [link](src/schema.gql)
 
 All valid data value for queries are the same as in the [REST version](https://github.com/Fuji-Noobie-Ghost/e-fanakalo)
 
@@ -81,6 +80,5 @@ All valid data value for queries are the same as in the [REST version](https://g
     findInput options are optionals.
 
 * Create exchange
-  * If you are using Postman
 
 ## <center>Have a nice Day :)</center>
