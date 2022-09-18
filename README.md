@@ -34,6 +34,11 @@ All valid data value for queries are the same as in the [REST version](https://g
 * <b>sort:</b> username, title, updatedAt, createdAt
 * <b>status:</b> active or deactive
 
+<br>
+
+### I suggest you to use [Altair GraphQL](https://altairgraphql.dev) because Altair support file uploads with his beautiful queries, but you can also use Postman<br>When creating a new exchange, you need to pass picture(s) file by Form-Data. In this case, our mutation should be pass as a text in Form-Data; we all know that making GraphQL Query request in form-data body is really boring.
+<br>
+
 ### This are some example of request you can test
 
 * Get all exchanges, without pagination
