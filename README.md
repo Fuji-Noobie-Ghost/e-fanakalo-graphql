@@ -22,7 +22,7 @@
     ```
 
 * Finally, you can run the API with the following command
-   ```bash
+    ```bash
     npm start
     ```
 
@@ -36,7 +36,7 @@ All valid data value for queries are the same as in the [REST version](https://g
 
 <br>
 
-### I suggest you to use [Altair GraphQL](https://altairgraphql.dev) because Altair support file uploads with his beautiful queries, but you can also use Postman<br>When creating a new exchange, you need to pass picture(s) file by Form-Data. In this case, our mutation should be pass as a text in Form-Data; we all know that making GraphQL Query request in form-data body is really boring.
+### I suggest you to use [Altair GraphQL](https://altairgraphql.dev) because Altair support file uploads with his beautiful GraphQL query presentation, but you can also use Postman<br>When creating a new exchange, you need to pass picture(s) file by Form-Data. In this case, our mutation should be pass as a text in Form-Data; we all know that making GraphQL Query request in form-data body is really boring.
 <br>
 
 ### This are some example of request you can test
@@ -45,8 +45,24 @@ All valid data value for queries are the same as in the [REST version](https://g
 
     ```graphql
     query {
-        exchanges (findInput: {
-            sort: updatedAt
+        exchanges (sort: "username") {
+            id
+            contact
+            username
+            createdAt
+            photos {
+                name
+            }
+        }
+    }
+    ```
+    Sort is optionnal
+
+* Get exchanges, with the pagination system
+    ```graphql
+    query {
+        exchangesPaginate (findInput: {
+            perPage: 2
         })
         {
             id
@@ -59,6 +75,5 @@ All valid data value for queries are the same as in the [REST version](https://g
         }
     }
     ```
-    Sort is optionnal
 
 ## <center>Have a nice Day :)</center>
