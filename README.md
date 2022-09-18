@@ -56,7 +56,7 @@ All valid data value for queries are the same as in the [REST version](https://g
         }
     }
     ```
-    Sort is optionnal
+    Sort is optional.
 
 * Get exchanges, with the pagination system
     ```graphql
@@ -68,14 +68,15 @@ All valid data value for queries are the same as in the [REST version](https://g
             status: "active"
         }) {
             id
-            contact
             username
-            createdAt
+            title
+            searchFor
             photos {
                 name
             }
         }
     }
     ```
+    findInput options are optionals.
 
 ## <center>Have a nice Day :)</center>
