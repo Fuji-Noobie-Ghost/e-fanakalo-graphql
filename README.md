@@ -85,10 +85,10 @@ All valid data value for queries are the same as in the [REST version](https://g
 
 * Create exchange
   * If you are using Postman, use form-data because we need to upload image(s)
-    ![](tutorials/postman.png)
+    ![Create Exchange via Postman](./tutorials/postman.png)
     As you can see in this picture, GraphQL upload file in Postman is very annoying:
     1. You need to create an operation query that perform the GraphQL mutation
-    ![](tutorials/operation.png)
+    ![Operations query](./tutorials/operation.png)
     If we try to parse the operations query string to GraphQL query, it will look like
 
         ```graphql
@@ -111,7 +111,7 @@ All valid data value for queries are the same as in the [REST version](https://g
         ```
         As variables, we have a json like
 
-        ```graphql
+        ```json
         {
             "files": [null, null],
             "username": "John", 
@@ -122,7 +122,7 @@ All valid data value for queries are the same as in the [REST version](https://g
         ```
 
     2. After that, you need to map all files you want to upload as shown below
-    ![](tutorials/map.png)
+    ![Map files](./tutorials/map.png)
 
     3. Finally, add file according to an incremented index as key
     
