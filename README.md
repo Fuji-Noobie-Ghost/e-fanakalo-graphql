@@ -62,9 +62,11 @@ All valid data value for queries are the same as in the [REST version](https://g
     ```graphql
     query {
         exchangesPaginate (findInput: {
-            perPage: 2
-        })
-        {
+            page: 1,
+            perPage: 10,
+            sort: "username",
+            status: "active"
+        }) {
             id
             contact
             username
