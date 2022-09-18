@@ -26,7 +26,11 @@
     npm start
     ```
 
-### The EndPoint is http://localhost:3000/graphql
+### The API EndPoint is http://localhost:3000/graphql
+### The EndPoint for static files uploaded is http://localhost:3000/uploads
+
+<br>
+
 ### You can view the GraphQL Schema this [link](src/schema.gql)
 
 All valid data value for queries are the same as in the [REST version](https://github.com/Fuji-Noobie-Ghost/e-fanakalo)
@@ -36,7 +40,7 @@ All valid data value for queries are the same as in the [REST version](https://g
 
 <br>
 
-### I suggest you to use [Altair GraphQL](https://altairgraphql.dev) because Altair support file uploads with his beautiful GraphQL query presentation, but you can also use Postman<br>When creating a new exchange, you need to pass picture(s) file by Form-Data. In this case, our mutation should be pass as a text in Form-Data; we all know that making GraphQL Query request in form-data body is really boring.
+> I suggest you to use [Altair GraphQL](https://altairgraphql.dev) because Altair support file uploads with his beautiful GraphQL query presentation, but you can also use Postman<br>When creating a new exchange, you need to pass picture(s) file by Form-Data. In this case, our mutation should be pass as a text in Form-Data; we all know that making GraphQL Query request in form-data body is really boring.
 <br>
 
 ### This are some example of request you can test
@@ -80,5 +84,49 @@ All valid data value for queries are the same as in the [REST version](https://g
     findInput options are optionals.
 
 * Create exchange
+  * If you are using Postman, use form-data because we need to upload image(s)
+    ![](tutorials/postman.png)
+    As you can see in this picture, GraphQL upload file in Postman is very annoying:
+    1. You need to create an operation query that perform the GraphQL mutation
+    ![](tutorials/operation.png)
+    If we try to parse the operations query string to GraphQL query, it will look like
+
+        ```graphql
+        mutation (
+            $files: [Upload!]!,
+            $username: String!,
+            $contact: String!,
+            $title: String!,
+            $searchFor: String!
+        ) {
+            createExchange(files: $files, exchangeInput: {
+                username: $username,
+                contact: $contact,
+                title: $title,
+                searchFor: $searchFor
+            }) {
+                id
+            }
+        }
+        ```
+        As variables, we have a json like
+
+        ```graphql
+        {
+            "files": [null, null],
+            "username": "John", 
+            "contact": "363633636",
+            "title": "Red Car", 
+            "searchFor": "Black Mini Car Model"
+        }
+        ```
+
+    2. After that, you need to map all files you want to upload as shown below
+    ![](tutorials/map.png)
+
+    3. Finally, add file according to an incremented index as key
+    
+        > If you want to add more file, you need to list those file in the map like shown in the picture above and insert new index that will contain your file
+
 
 ## <center>Have a nice Day :)</center>
