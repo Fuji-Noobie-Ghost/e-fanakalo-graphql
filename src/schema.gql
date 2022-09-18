@@ -1,0 +1,66 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Photo {
+  name: String!
+  owner: String!
+}
+
+type Exchange {
+  id: String!
+  username: String!
+  contact: String!
+  title: String!
+  searchFor: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isActive: String!
+  photos: [Photo!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  exchanges(sort: String!): [Exchange!]!
+  exchangesPaginate(findInput: PaginationInput!): [Exchange!]!
+  exchange(id: String!): Exchange!
+}
+
+input PaginationInput {
+  status: String
+  page: Int
+  perPage: Int
+  sort: String
+}
+
+type Mutation {
+  createExchange(files: [Upload!]!, exchangeInput: CreateExchangeInput!): Exchange!
+  updateExchange(updateExchangeInput: UpdateExchangeInput!): Exchange!
+  removeExchange(id: String!): Exchange!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateExchangeInput {
+  """User name"""
+  username: String!
+
+  """User phone number"""
+  contact: String!
+
+  """Title of the toy"""
+  title: String!
+
+  """Description of the item the user is searching for"""
+  searchFor: String!
+}
+
+input UpdateExchangeInput {
+  id: String!
+  isActive: String!
+}
