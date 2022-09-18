@@ -94,17 +94,9 @@ All valid data value for queries are the same as in the [REST version](https://g
         ```graphql
         mutation (
             $files: [Upload!]!,
-            $username: String!,
-            $contact: String!,
-            $title: String!,
-            $searchFor: String!
+            $exchangeInput: CreateExchangeInput!
         ) {
-            createExchange(files: $files, exchangeInput: {
-                username: $username,
-                contact: $contact,
-                title: $title,
-                searchFor: $searchFor
-            }) {
+            createExchange(files: $files, exchangeInput: $exchangeInput) {
                 id
             }
         }
@@ -114,10 +106,12 @@ All valid data value for queries are the same as in the [REST version](https://g
         ```json
         {
             "files": [null, null],
-            "username": "John", 
-            "contact": "363633636",
-            "title": "Red Car", 
-            "searchFor": "Black Mini Car Model"
+            "exchangeInput": {
+              "username": "John", 
+              "contact": "363633636",
+              "title": "Red Car", 
+              "searchFor": "Black Mini Car Model"
+            }
         }
         ```
 
@@ -128,5 +122,29 @@ All valid data value for queries are the same as in the [REST version](https://g
     
         > If you want to add more file, you need to list those file in the map like shown in the picture above and insert new index that will contain your file
 
+  * If you are using Altair, this will be pretty much simple
+    ![Using Altair](./tutorials/altair.png)
+    As you can see, you just need to copy the GraphQL mutation query and variables(excluding the "files" variable) below and paste them into Altair.
+
+* Deactivate or Activate an exchange ("N" to Deactivate and "Y" to Activate )
+  ```graphql
+  mutation {
+    updateExchange (updateExchangeInput: {
+        id: "023f3011-957c-4454-8d14-99da659ed97a",
+        isActive: "N"
+    }) {
+        title
+        isActive
+        updatedAt
+    }
+  }
+  ```
+
+* Deleting an exchange
+  ```graphql
+  mutation {
+    removeExchange (id: "023f3011-957c-4454-8d14-99da659ed97a")
+  }
+  ```
 
 ## <center>Have a nice Day :)</center>
